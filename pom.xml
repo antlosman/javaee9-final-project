@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.javaee9</groupId>
     <artifactId>javaee9-final-project</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>social-network</name>
     <description>javaee9-final-project</description>
     <properties>

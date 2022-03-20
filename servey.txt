@@ -1,0 +1,10 @@
+social network
+- register
+- profile
+- welcome page
+- search box
+- chat
+- news feeds
+- marketplace
+- groups
+- notifications
