@@ -10,7 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule // this import comes from config.service.ts
   ],
   providers: [],
   bootstrap: [WelcomeComponent]
