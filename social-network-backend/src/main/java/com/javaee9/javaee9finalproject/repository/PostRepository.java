@@ -10,18 +10,18 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    List<Post> findAllByCreationTimestampGreaterThan(ZonedDateTime boundary);
+    List<Post> findAllByCreationTimeStampGreaterThan(ZonedDateTime boundary);
 
     // @Query uses names from entity not from table (JPQL feature)
     @Query("""
-        SELECT p.author
+        SELECT p
         FROM Post p
         WHERE p.creationTimeStamp >= :boundary 
 """)
     List<Post> queryAllRecentPosts(@Param("boundary")ZonedDateTime boundary);
 
     default List<Post> readAllRecentPosts(ZonedDateTime boundary) {
-        return findAllByCreationTimestampGreaterThan(boundary);
+        return findAllByCreationTimeStampGreaterThan(boundary);
     }
 
 }
