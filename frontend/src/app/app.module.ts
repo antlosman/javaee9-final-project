@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -12,7 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     HttpClientModule,
-    BrowserAnimationsModule // this import comes from config.service.ts
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    // this import comes from config.service.ts
   ],
   providers: [],
   bootstrap: [WelcomeComponent]
