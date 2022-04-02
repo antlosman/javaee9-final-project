@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
     //-----------------------------------------------------
@@ -47,6 +47,12 @@ public class PostController {
         // 1. read Post by id form database
         // 2. convert Post ingo PostDto
         // 3. return to user
-        return null;
+        return new PostDto(
+                1L,
+                "My post",
+                "content",
+                "me",
+                "1998",
+                "1999");
     }
 }
