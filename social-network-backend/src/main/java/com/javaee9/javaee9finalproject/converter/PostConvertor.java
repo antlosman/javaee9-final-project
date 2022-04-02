@@ -16,8 +16,8 @@ public class PostConvertor implements Converter<PostDto, Post> {
                 .header(postDto.header())
                 .content(postDto.content())
                 .author(postDto.author())
-                .creationTimeStamp(ZonedDateTime.parse(postDto.creationTimeStamp()))
-                .updateTimeStamp(ZonedDateTime.parse(postDto.updateTimeStamp()))
+                .creationTimeStamp(fromString(postDto.creationTimeStamp()))
+                .updateTimeStamp(fromString(postDto.updateTimeStamp()))
                 .build();
         // thanks to that we have a @Builder annotation in the Post entity we can use build() method that
         // converts Post.builder to builder
@@ -33,5 +33,9 @@ public class PostConvertor implements Converter<PostDto, Post> {
                 post.getCreationTimeStamp().toString(),
                 post.getUpdateTimeStamp().toString()
                 );
+    }
+
+    private ZonedDateTime fromString(String timestamp) {
+        return timestamp != null ? ZonedDateTime.parse(timestamp) : null;
     }
 }
