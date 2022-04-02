@@ -52,4 +52,16 @@ public class PostService {
         // and the last step .collect or .toList() - is just gathering items from the stream to the list
     }
 
+    // receipt
+    // 1. convert to entity from dto
+    // 2. store entity into db
+    // 3. return to client dto based on stored entity (with id and creationTimestamp and updateTimestamp)
+    public PostDto createNewPost(PostDto toStore) {
+        log.info("creating new post: [{}]", toStore);
+        var entityToStore = postConvertor.fromDtoToEntity(toStore);
+        var storedEntity = postRepository.save(entityToStore);
+        var result = postConvertor.fromEntityToDto(storedEntity);
+        log.info("created post: [{}]", result);
+        return result;
+    }
 }
