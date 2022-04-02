@@ -6,6 +6,7 @@ import com.javaee9.javaee9finalproject.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -54,9 +55,9 @@ public class PostController {
                 "1999");
     }
 
-    // todo: validaton on dto
+    // todo: validation on dto
     @PostMapping()
-    public PostDto createNewPost(@RequestBody PostDto toStore) {
+    public PostDto createNewPost(@Valid @RequestBody PostDto toStore) {
         log.info("trying to store new post: [{}]", toStore);
         return postService.createNewPost(toStore);
     }
