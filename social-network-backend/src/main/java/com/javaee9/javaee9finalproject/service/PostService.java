@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PostService {
 
-    private final PostRepository postRepository;
+    private final PostRepository postRepository; // without this dependency PostService won't be able to read the data
     private final PostConvertor postConvertor;
 
     public PostService(PostRepository postRepository, PostConvertor postConvertor) {
@@ -38,11 +38,18 @@ public class PostService {
 
     public List<PostDto> readRecentPosts(ZonedDateTime boundary) {
         var result = postRepository.queryAllRecentPosts(boundary);
-        log.debug("result: {}", result);
+        log.debug("result: {}", result); // by default the debug is disabled, we can activate this feature inside the application.properties
         log.info("number of read posts: [{}]", result.size());
         return result
-                .stream()
+                .stream() // stream of posts
                 .map(post -> postConvertor.fromEntityToDto(post))// == .map(postConvertor::fromEntityToDto)
-                .collect(Collectors.toList());
+//                .collect(Collectors.toList());
+                .toList();
+        // so we're starting from the list of posts: var result List<Post>
+        // changing that list to stream of posts: .stream()
+        // and using a .map method (what is a hidden loop for every item which is type Post) with the help of
+        // postConvertor we change every Post entity to DTO
+        // and the last step .collect or .toList() - is just gathering items from the stream to the list
     }
+
 }

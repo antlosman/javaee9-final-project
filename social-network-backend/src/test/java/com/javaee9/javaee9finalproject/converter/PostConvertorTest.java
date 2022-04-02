@@ -25,7 +25,9 @@ class PostConvertorTest {
         System.out.println("time now is: " + now);
         ZonedDateTime creationTimeStamp = ZonedDateTime.now(Clock.systemUTC());
         ZonedDateTime updateTimeStamp = ZonedDateTime.now(Clock.systemUTC());
-        PostDto dto = new PostDto(1L,
+
+        PostDto dto = new PostDto(
+                1L,
                 "my header",
                 "long content",
                 "just me",

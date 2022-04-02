@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
 
+// todo: possible clash with frontend date format
 @Component
 public class PostConvertor implements Converter<PostDto, Post> {
     @Override
@@ -18,11 +19,14 @@ public class PostConvertor implements Converter<PostDto, Post> {
                 .creationTimeStamp(ZonedDateTime.parse(postDto.creationTimeStamp()))
                 .updateTimeStamp(ZonedDateTime.parse(postDto.updateTimeStamp()))
                 .build();
+        // thanks to that we have a @Builder annotation in the Post entity we can use build() method that
+        // converts Post.builder to builder
     }
 
     @Override
     public PostDto fromEntityToDto(Post post) {
-        return new PostDto(post.getId(),
+        return new PostDto(
+                post.getId(),
                 post.getHeader(),
                 post.getContent(),
                 post.getAuthor(),

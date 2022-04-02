@@ -1,3 +1,4 @@
+// interface can have the same name as in the backend (entity -> Post)
 export interface Post {
   header: string,
   content: string,
