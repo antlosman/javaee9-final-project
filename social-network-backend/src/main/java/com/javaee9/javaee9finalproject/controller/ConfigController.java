@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 @RequestMapping("/config")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("${allowed.origin.url}")
 // https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
 
 public class ConfigController {

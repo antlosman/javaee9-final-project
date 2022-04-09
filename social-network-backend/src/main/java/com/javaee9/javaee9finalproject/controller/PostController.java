@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping("/posts")
-@CrossOrigin("http://localhost:4200") // todo: move to config
+@CrossOrigin("${allowed.origin.url}")
 public class PostController {
 
     //-----------------------------------------------------

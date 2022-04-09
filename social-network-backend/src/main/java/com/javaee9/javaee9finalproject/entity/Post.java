@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.Clock;
 import java.time.ZonedDateTime;
 
@@ -22,7 +24,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id; // it's a primary key
     String header;
+    @NotEmpty
+    @Size(min = 3, message = "Your post is too short :)")
     String content;
+    @NotEmpty
+    @Size(min = 3, message = "Author name is too short :)")
     String author;
     ZonedDateTime creationTimeStamp;
     ZonedDateTime updateTimeStamp; // in case we need to update/edit post
