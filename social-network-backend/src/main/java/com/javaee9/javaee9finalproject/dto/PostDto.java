@@ -1,6 +1,6 @@
 package com.javaee9.javaee9finalproject.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty; // to transform post dto to json
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

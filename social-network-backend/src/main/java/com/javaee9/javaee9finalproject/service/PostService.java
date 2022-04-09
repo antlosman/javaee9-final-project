@@ -67,11 +67,20 @@ public class PostService {
 
         log.info("creating new post: [{}]", toStore);
 
-        var entity = postConvertor.fromDtoToEntity(toStore);
-        postRepository.save(entity);
-        var result = postConvertor.fromEntityToDto(entity);
+        var entity = postConvertor.fromDtoToEntity(toStore); // it means that user create new PostDto on the
+        // website and our backend converts it to Entity
+        postRepository.save(entity); // here we save this entity in our database, that means we receive completely
+        // new entity with filled fields (header, content, author, timestamps)
+        // *when we're calling save method, we automatically call setInitialTimestamp() and setUpdateTimestamp()
+        // methods from Post entity
+        var result = postConvertor.fromEntityToDto(entity); // and here we convert our new entity back to
+        // dto and return it to the user
 
         log.info("created post: [{}]", result);
         return result;
+
+        // summary: from the form on the frontend, user sends json, json converts it into dto, backend converts this
+        // dto to entity to store it in the database, and then backend converts this new entity back to dto, to send
+        // it back to frontend (to user) to show that new post was created
     }
 }

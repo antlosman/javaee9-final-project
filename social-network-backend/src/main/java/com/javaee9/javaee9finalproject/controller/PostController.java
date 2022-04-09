@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping("/posts")
+@CrossOrigin("http://localhost:4200") // todo: move to config
 public class PostController {
 
     //-----------------------------------------------------
@@ -57,6 +58,9 @@ public class PostController {
 
     // todo: validation on dto
     @PostMapping()
+    // in order to that Spring be able to translate PostDto into Java object, the payload need to be sent inside
+    // the body, so we need to add @RequestBody annotation, it's like we're saying, please read our PostDto from
+    // RequestBody
     public PostDto createNewPost(@Valid @RequestBody PostDto toStore) {
         log.info("trying to store new post: [{}]", toStore);
         return postService.createNewPost(toStore);
